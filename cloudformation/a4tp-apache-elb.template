@@ -1,7 +1,7 @@
 {
   "AWSTemplateFormatVersion" : "2010-09-09",
 
-  "Description" : "Create a load balanced sample web site. The AMI is chosen based on the region in which the stack is run. This example creates 2 EC2 instances behind a load balancer with a simple health check. The instances may be created in one or more AZs. The web site is available on port 80, however, the instances can be configured to listen on any port (8888 by default). **WARNING** This template creates one or more Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template.",
+  "Description" : "Create a load balanced sample web site. The AMI is chosen based on the region in which the stack is run. This example creates a load balancer, an autoscaling group and a launch configuration. The instances may be created in one or more AZs. The Website URL is available as a stack output. **WARNING** This template creates one or more Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template.",
 
   "Parameters" : {
     "InstanceType" : {
@@ -9,15 +9,14 @@
       "Type" : "String",
       "Default" : "t2.small"
     },
-    "WebServerPort" : {
-      "Description" : "TCP/IP port of the web server",
-      "Type" : "String",
-      "Default" : "80"
-    },
     "KeyName" : {
       "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
-      "Type" : "AWS::EC2::KeyPair::KeyName",
-      "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
+      "Type" : "String"
+    }, 
+    "DesiredCapacity" : {
+      "Description" : "Number of instances to deploy",
+      "Type" : "Number",
+      "Default" : "1"
     }
   },
 
@@ -49,23 +48,21 @@
         }
       }
     },
-
-    AutoScalingGroup: {
+    "AutoScalingGroup": {
       "Type" : "AWS::AutoScaling::AutoScalingGroup",
       "Properties" : {
         "AvailabilityZones" : { "Fn::GetAZs" : ""},
         "LaunchConfigurationName" : { "Ref" : "LaunchConfiguration" },
-        "MinSize" : { "Ref" : "DesiredSize" },
-        "MaxSize" : { "Ref" : "DesiredSize" },
-        "DesiredCapacity" : { "Ref" : "DesiredSize" },
+        "MinSize" : { "Ref" : "DesiredCapacity" },
+        "MaxSize" : { "Ref" : "DesiredCapacity" },
+        "DesiredCapacity" : { "Ref" : "DesiredCapacity" },
         "Tags": [
-          { "Key": "Requestor", "Value" : { "Ref": "StackRequestor" }, "PropagateAtLaunch" : "true" }
+          { "Key": "Role", "Value" : "WebServer", "PropagateAtLaunch" : "true" }
         ],
         "LoadBalancerNames" : [ { "Ref" : "ElasticLoadBalancer" } ]
       }
     },
-
-    LaunchConfiguration : {
+    "LaunchConfiguration" : {
       "Type" : "AWS::AutoScaling::LaunchConfiguration", 
       "Metadata" : {
         "AWS::CloudFormation::Init" : {
@@ -129,12 +126,12 @@
       },
       "Properties" : {
         "InstanceType" : { "Ref" : "InstanceType" },
-        "IamInstanceProfile" : { "Ref" : "InstanceProfile" },
+        "IamInstanceProfile" : { "Ref" : "IamInstanceProfile" },
         "ImageId" : {
           "Fn::FindInMap" : [ "AWSRegion2AMI", { "Ref" : "AWS::Region" }, "ami" ]
         },
         "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup"} ],
-        "KeyName" : { "Ref" : "KeyPairName" },
+        "KeyName" : { "Ref" : "KeyName" } ,
         "UserData" : { 
           "Fn::Base64" : {
             "Fn::Join" : [
@@ -163,7 +160,6 @@
         }
       }
     },
-
     "ElbSecurityGroup" : {
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
@@ -176,7 +172,6 @@
         }]
       }
     },
-
     "InstanceSecurityGroup" : {
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
@@ -195,7 +190,6 @@
         } ]
       }
     },
-
     "IamRole" : {
       "Type" : "AWS::IAM::Role",
       "Properties" : {
@@ -212,7 +206,6 @@
         "Path" : "/"
       }
     },
-
     "IamPolicy" : {
       "Type" : "AWS::IAM::Policy",
       "Properties" : {
@@ -220,19 +213,38 @@
         "PolicyDocument" : {
           "Version" : "2012-10-17",
           "Statement" : [
-            { "Effect" : "Allow", "Action"}
+            { "Effect" : "Allow", "Action" : "*", "Resource" : "*" }
           ]
-        }
+        },
+        "Roles" : [ { "Ref" : "IamRole"} ] 
       }
-    }
-
-    "IamInstanceProfile" : {
-
+    },
+    "IamInstanceProfile": {
+	    "Type": "AWS::IAM::InstanceProfile",
+	    "Properties": {
+		    "Path": "/",
+		    "Roles": [ {
+		      "Ref": "IamRole"
+		    } ]
+	    }
+	  },
+    "CompletionWaitHandle": {
+      "Type": "AWS::CloudFormation::WaitConditionHandle"
+        },
+    "CompletionWaitCondition": {
+      "Type": "AWS::CloudFormation::WaitCondition",
+      "DependsOn": "LaunchConfiguration",
+      "Properties": {
+          "Handle": {
+              "Ref": "CompletionWaitHandle"
+          },
+          "Timeout": "1800"
+      }
     }
   },
 
   "Outputs" : {
-    "URL" : {
+    "WebsiteURL" : {
       "Description" : "URL of the sample website",
       "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "ElasticLoadBalancer", "DNSName" ]}]]}
     }
