@@ -1,8 +1,8 @@
-name             'apache-test'
-maintainer       'The Authors'
-maintainer_email 'you@example.com'
+name             'a4tp'
+maintainer       'Shayne Clausson'
+maintainer_email 'sclausson@hotmail.com'
 license          'all_rights'
-description      'Installs/Configures apache-test'
-long_description 'Installs/Configures apache-test'
+description      'Installs/Configures Automation for the People website'
+long_description 'Installs/Configures Automation for the People website for Stelligent Demo'
 version          '0.1.0'
 

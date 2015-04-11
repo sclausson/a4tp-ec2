@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'apache-test::default' do
+describe 'a4tp::default' do
 
   # Serverspec examples can be found at
   # http://serverspec.org/resource_types.html
