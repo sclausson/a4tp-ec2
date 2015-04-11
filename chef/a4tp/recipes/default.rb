@@ -14,3 +14,9 @@ template "/var/www/html/index.html" do
 	source 'index.html.erb'
 	mode '0644'
 end
+
+#get rid of Amazon Linux's annoying welcome page
+file "/var/www/html/index.php" do
+	action :delete
+end
+
