@@ -155,7 +155,7 @@
               " exit 1\n",
               "}\n", 
               "#Inititalize cfn-init run\n",
-              "cfn-init -v -s ", { "Ref" : "AWS::StackName" }, " -r LaunchConfiguration", "--region ", { "Ref" : "AWS::Region" }, " > /tmp/cfn-init.log 2>&1 || error_exit $(/tmp/cfn-init.log)\n"
+              "cfn-init -v -s ", { "Ref" : "AWS::StackName" }, " -r LaunchConfiguration", " --region ", { "Ref" : "AWS::Region" }, " > /tmp/cfn-init.log 2>&1 || error_exit $(/tmp/cfn-init.log)\n"
               ]
             ]
 
