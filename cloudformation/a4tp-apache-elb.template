@@ -1,0 +1,240 @@
+{
+  "AWSTemplateFormatVersion" : "2010-09-09",
+
+  "Description" : "Create a load balanced sample web site. The AMI is chosen based on the region in which the stack is run. This example creates 2 EC2 instances behind a load balancer with a simple health check. The instances may be created in one or more AZs. The web site is available on port 80, however, the instances can be configured to listen on any port (8888 by default). **WARNING** This template creates one or more Amazon EC2 instances. You will be billed for the AWS resources used if you create a stack from this template.",
+
+  "Parameters" : {
+    "InstanceType" : {
+      "Description" : "Type of EC2 instance to launch",
+      "Type" : "String",
+      "Default" : "t2.small"
+    },
+    "WebServerPort" : {
+      "Description" : "TCP/IP port of the web server",
+      "Type" : "String",
+      "Default" : "80"
+    },
+    "KeyName" : {
+      "Description" : "Name of an existing EC2 KeyPair to enable SSH access to the instances",
+      "Type" : "AWS::EC2::KeyPair::KeyName",
+      "ConstraintDescription" : "must be the name of an existing EC2 KeyPair."
+    }
+  },
+
+  "Mappings" : {
+    "AWSRegion2AMI" : {
+      "us-east-1" : { "ami" : "ami-7a11e213" },
+      "us-west-1" : { "ami" : "ami-c9c7978c" },
+      "us-west-2" : { "ami" : "ami-d114f295" },
+      "eu-west-1" : { "ami" : "ami-a10897d6" }
+    }
+  },
+
+  "Resources" : {
+    "ElasticLoadBalancer" : {
+      "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
+      "Properties" : {
+        "AvailabilityZones" : { "Fn::GetAZs" : "" },
+        "Listeners" : [ {
+          "LoadBalancerPort" : "80",
+          "InstancePort" : "80",
+          "Protocol" : "HTTP"
+        } ],
+        "HealthCheck" : {
+          "Target" : "HTTP:80/index.html",
+          "HealthyThreshold" : "3",
+          "UnhealthyThreshold" : "5",
+          "Interval" : "30",
+          "Timeout" : "5"
+        }
+      }
+    },
+
+    AutoScalingGroup: {
+      "Type" : "AWS::AutoScaling::AutoScalingGroup",
+      "Properties" : {
+        "AvailabilityZones" : { "Fn::GetAZs" : ""},
+        "LaunchConfigurationName" : { "Ref" : "LaunchConfiguration" },
+        "MinSize" : { "Ref" : "DesiredSize" },
+        "MaxSize" : { "Ref" : "DesiredSize" },
+        "DesiredCapacity" : { "Ref" : "DesiredSize" },
+        "Tags": [
+          { "Key": "Requestor", "Value" : { "Ref": "StackRequestor" }, "PropagateAtLaunch" : "true" }
+        ],
+        "LoadBalancerNames" : [ { "Ref" : "ElasticLoadBalancer" } ]
+      }
+    },
+
+    LaunchConfiguration : {
+      "Type" : "AWS::AutoScaling::LaunchConfiguration", 
+      "Metadata" : {
+        "AWS::CloudFormation::Init" : {
+          "config" : {
+            "files" : {
+              "/etc/chef/shaynetest-validator.pem": {
+                "source": "https://s3.amazonaws.com/ShayneResources/shaynetest-validator.pem",
+                "authentication": "S3AccessCreds"
+              },
+              "/etc/chef/client.rb": {
+                "content": {
+                  "Fn::Join": [
+                    "",
+                    [
+                        "log_level                :info\n",
+                        "log_location             '/opt/chef/chef-client.log'\n",
+                        "validation_client_name   'shaynetest-validator'\n",
+                        "validation_key           '/etc/chef/shaynetest-validator.pem'\n",
+                        "chef_server_url          'https://api.opscode.com/organizations/shaynetest'\n",
+                        "cache_type               'BasicFile'\n",
+                        "cache_options( :path =>  '/opt/chef/.chef/checksums' )\n",
+                        "cookbook_path            ['/opt/chef/cookbooks']\n"
+                    ]
+                  ]
+                },
+                "mode": "000644",
+                "owner": "root",
+                "group": "root"
+              }
+            },
+            "commands" : {
+              "01_chef_run" : {
+                "command" : "/opt/chef/chef-client -o recipe[a4tp]",
+                "ignoreErrors" : "false"
+              },
+              "99_all_clear_signal" : {
+                "command" : {
+                  "Fn::Join" : [
+                    "",
+                    [
+                      "cfn-signal -e 0 -r \"a4tp Website Setup Complete\" '",
+                      {
+                        "Ref" : "CompletionWaitHandle"
+                      },
+                      "'"
+                    ]    
+                  ]
+                },
+                "ignoreErrors" : "false"
+              }
+            }
+          }
+        },
+        "AWS::CloudFormation::Authentication": {
+          "rolebased": {
+            "type" : "s3",
+            "buckets" : [ "arn:aws:s3:::ShayneResources" ],
+            "roleName" : { "Ref" : "IamRole" }
+          }
+        }
+      },
+      "Properties" : {
+        "InstanceType" : { "Ref" : "InstanceType" },
+        "IamInstanceProfile" : { "Ref" : "InstanceProfile" },
+        "ImageId" : {
+          "Fn::FindInMap" : [ "AWSRegion2AMI", { "Ref" : "AWS::Region" }, "ami" ]
+        },
+        "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup"} ],
+        "KeyName" : { "Ref" : "KeyPairName" },
+        "UserData" : { 
+          "Fn::Base64" : {
+            "Fn::Join" : [
+              "",
+              [
+              "#!/bin/bash\n",
+              "#update iptables\n",
+              "iptables -A INPUT -p tcp -m tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT\n",
+              "#update packages\n",
+              "yum -y update\n",
+              "#install chef client\n",
+              "wget https://opscode-omnibus-packages.s3.amazonaws.com/el/6/x86_64/chef-12.0.3-1.x86_64.rpm\n",
+              "rpm -ivh chef-12.0.3-1.x86_64.rpm\n",
+              "#Error reporting helper function\n",
+              "function error_exit\n",
+              "{\n",
+              " cfn-signal -e 1 -r \"$1\" '", { "Ref" : "CompletionWaitHandle" }, "'\n",
+              " exit 1\n",
+              "}\n", 
+              "#Inititalize cfn-init run\n",
+              "cfn-init -v -s ", { "Ref" : "AWS::StackName" }, " -r LaunchConfiguration", "--region ", { "Ref" : "AWS::Region" }, " > /tmp/cfn-init.log 2>&1 || error_exit $(/tmp/cfn-init.log)\n"
+              ]
+            ]
+
+          }
+        }
+      }
+    },
+
+    "ElbSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "Enable ALL inbound HTTP",
+        "SecurityGroupIngress" : [{
+          "IpProtocol" : "tcp",
+          "FromPort" : "80",
+          "ToPort" : "80",
+          "CidrIp" : "0.0.0.0/0"
+        }]
+      }
+    },
+
+    "InstanceSecurityGroup" : {
+      "Type" : "AWS::EC2::SecurityGroup",
+      "Properties" : {
+        "GroupDescription" : "Enable SSH access and HTTP access on the inbound port",
+        "SecurityGroupIngress" : [ {
+          "IpProtocol" : "tcp",
+          "FromPort" : "22",
+          "ToPort" : "22",
+          "CidrIp" : "0.0.0.0/0"
+        },
+        {
+          "IpProtocol" : "tcp",
+          "FromPort" : { "Ref" : "WebServerPort" },
+          "ToPort" : { "Ref" : "WebServerPort" },
+          "CidrIp" : "0.0.0.0/0"
+        } ]
+      }
+    },
+
+    "IamRole" : {
+      "Type" : "AWS::IAM::Role",
+      "Properties" : {
+        "AssumeRolePolicyDocument" : {
+          "Version" : "2012-10-17",
+          "Statement" : [{
+            "Effect" : "Allow",
+            "Principal" : {
+              "Service" : [ "ec2.amazonaws.com" ]
+            },
+            "Action" : [ "sts:AssumeRole" ]
+          }]
+        },
+        "Path" : "/"
+      }
+    },
+
+    "IamPolicy" : {
+      "Type" : "AWS::IAM::Policy",
+      "Properties" : {
+        "PolicyName" : "WebServerPolicy",
+        "PolicyDocument" : {
+          "Version" : "2012-10-17",
+          "Statement" : [
+            { "Effect" : "Allow", "Action"}
+          ]
+        }
+      }
+    }
+
+    "IamInstanceProfile" : {
+
+    }
+  },
+
+  "Outputs" : {
+    "URL" : {
+      "Description" : "URL of the sample website",
+      "Value" :  { "Fn::Join" : [ "", [ "http://", { "Fn::GetAtt" : [ "ElasticLoadBalancer", "DNSName" ]}]]}
+    }
+  }
+}
