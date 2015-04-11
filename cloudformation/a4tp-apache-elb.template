@@ -95,7 +95,7 @@
             },
             "commands" : {
               "01_chef_run" : {
-                "command" : "/opt/chef/chef-client -o recipe[a4tp]",
+                "command" : "/opt/chef/bin/chef-client -o recipe[a4tp]",
                 "ignoreErrors" : "false"
               },
               "99_all_clear_signal" : {
