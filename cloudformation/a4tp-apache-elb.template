@@ -184,8 +184,8 @@
         },
         {
           "IpProtocol" : "tcp",
-          "FromPort" : { "Ref" : "WebServerPort" },
-          "ToPort" : { "Ref" : "WebServerPort" },
+          "FromPort" :  "80",
+          "ToPort" : "80",
           "CidrIp" : "0.0.0.0/0"
         } ]
       }
