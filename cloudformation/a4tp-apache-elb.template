@@ -119,7 +119,7 @@
         "AWS::CloudFormation::Authentication": {
           "S3AccessCreds": {
             "type" : "s3",
-            "buckets" : [ "arn:aws:s3:::ShayneResources" ],
+            "buckets" : [ "ShayneResources" ],
             "roleName" : { "Ref" : "IamRole" }
           }
         }
