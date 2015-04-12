@@ -29,15 +29,14 @@ class Stack
   def get_ip_addresses
     cfn = AWS::CloudFormation.new
     as = AWS::AutoScaling.new
-    ec2 = AWS::EC2.new
 
-    @instanceCollections = []
-    asg = get_stack_asg
-    @instanceCollections << asg.ec2_instances
+    instanceCollections = []
+    #asg = get_stack_asg
+    instanceCollections << @asg.ec2_instances
 
     @ips = []
 
-    @instanceCollections.each do |ic|
+    instanceCollections.each do |ic|
       ic.each do |instance|
         @ips << instance.private_ip_address
       end

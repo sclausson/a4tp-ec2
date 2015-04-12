@@ -1,13 +1,16 @@
 require 'rake'
 require 'rspec/core/rake_task'
+require_relative './lib/stack_info_helper.rb'
 
 task :spec    => 'spec:all'
 task :default => :spec
 
 namespace :spec do
-  targets = []
-  targets << ENV['TARGET_HOST']
+  
   role = ENV['ROLE']
+  stackname = ENV['STACK_NAME']
+
+  targets = Stack.new(stackname).ips
 
   task :all     => targets
   task :default => :all
