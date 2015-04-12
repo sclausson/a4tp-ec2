@@ -7,6 +7,7 @@ require 'trollop'
 	opt :template, "Name of the Cfn Template that describes our infrastructure", :type => String, :required => true
 	opt :keyName, "Name of a valid EC2 keypair that can be used to access the instances",	:type => String, :required => true
 	opt :instanceType, "The type of instance to launch (ex. m3.medium)", :type => String, :required => true
+	opt :desiredCapacity, "Desired number of instances to be deployed", :type => String, :required => true
 end
 
 @stack = OpenDelivery::Stack.new
@@ -15,6 +16,7 @@ def create_params
 	params = {
 		"KeyName" => @opts[:keyName], 
 		"InstanceType" => @opts[:instanceType]
+		"DesiredCapacity" => @opts[:desiredCapacity]
 	}
 end
 
