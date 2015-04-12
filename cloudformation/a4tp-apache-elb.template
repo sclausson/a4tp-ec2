@@ -22,10 +22,7 @@
 
   "Mappings" : {
     "AWSRegion2AMI" : {
-      "us-east-1" : { "ami" : "ami-7a11e213" },
-      "us-west-1" : { "ami" : "ami-c9c7978c" },
-      "us-west-2" : { "ami" : "ami-d114f295" },
-      "eu-west-1" : { "ami" : "ami-a10897d6" }
+      "us-east-1" : { "ami" : "ami-28cae740" }
     }
   },
 
