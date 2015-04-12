@@ -15,7 +15,7 @@ end
 def create_params
 	params = {
 		"KeyName" => @opts[:keyName], 
-		"InstanceType" => @opts[:instanceType]
+		"InstanceType" => @opts[:instanceType],
 		"DesiredCapacity" => @opts[:desiredCapacity]
 	}
 end
