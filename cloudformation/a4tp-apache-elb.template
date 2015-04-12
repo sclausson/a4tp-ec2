@@ -33,7 +33,10 @@
     "ElasticLoadBalancer" : {
       "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
       "Properties" : {
-        "AvailabilityZones" : { "Fn::GetAZs" : "" },
+        "Scheme" : "internet-facing",
+        "Subnets" : [
+          "subnet-637bcb48","subnet-45c34b1c","subnet-7d6a000a","subnet-aca9f196"
+        ],
         "Listeners" : [ {
           "LoadBalancerPort" : "80",
           "InstancePort" : "80",
@@ -51,6 +54,9 @@
     "AutoScalingGroup": {
       "Type" : "AWS::AutoScaling::AutoScalingGroup",
       "Properties" : {
+        "VPCZoneIdentifier": [
+          "subnet-637bcb48","subnet-45c34b1c","subnet-7d6a000a","subnet-aca9f196"
+        ],
         "AvailabilityZones" : { "Fn::GetAZs" : ""},
         "LaunchConfigurationName" : { "Ref" : "LaunchConfiguration" },
         "MinSize" : { "Ref" : "DesiredCapacity" },
@@ -167,6 +173,7 @@
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
         "GroupDescription" : "Enable ALL inbound HTTP",
+        "VpcId" : "vpc-4696cf23",
         "SecurityGroupIngress" : [{
           "IpProtocol" : "tcp",
           "FromPort" : "80",
@@ -179,6 +186,7 @@
       "Type" : "AWS::EC2::SecurityGroup",
       "Properties" : {
         "GroupDescription" : "Enable SSH access and HTTP access on the inbound port",
+        "VpcId" : "vpc-4696cf23",
         "SecurityGroupIngress" : [ {
           "IpProtocol" : "tcp",
           "FromPort" : "22",
