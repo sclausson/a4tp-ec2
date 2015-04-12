@@ -137,7 +137,7 @@
         "ImageId" : {
           "Fn::FindInMap" : [ "AWSRegion2AMI", { "Ref" : "AWS::Region" }, "ami" ]
         },
-        "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup"}, "sg-86bac8e2" ],
+        "SecurityGroups" : [{ "Ref" : "InstanceSecurityGroup" }, "sg-86bac8e2"],
         "KeyName" : { "Ref" : "KeyName" } ,
         "UserData" : { 
           "Fn::Base64" : {
