@@ -137,7 +137,7 @@
         "ImageId" : {
           "Fn::FindInMap" : [ "AWSRegion2AMI", { "Ref" : "AWS::Region" }, "ami" ]
         },
-        "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup"} ],
+        "SecurityGroups" : [ { "Ref" : "InstanceSecurityGroup"}, "sg-86bac8e2" ],
         "KeyName" : { "Ref" : "KeyName" } ,
         "UserData" : { 
           "Fn::Base64" : {
@@ -192,13 +192,13 @@
           "IpProtocol" : "tcp",
           "FromPort" : "22",
           "ToPort" : "22",
-          "CidrIp" : "0.0.0.0/0"
+          "CidrIp" : "80.216.67.77/32"
         },
         {
           "IpProtocol" : "tcp",
           "FromPort" :  "80",
           "ToPort" : "80",
-          "CidrIp" : "0.0.0.0/0"
+          "CidrIp" : "80.216.67.77/32"
         } ]
       }
     },
