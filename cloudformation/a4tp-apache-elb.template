@@ -34,7 +34,7 @@
       "Type" : "AWS::ElasticLoadBalancing::LoadBalancer",
       "Properties" : {
         "Scheme" : "internet-facing",
-        "SecurityGroups" : { "Ref" : "ElbSecurityGroup" },
+        "SecurityGroups" : [{ "Ref" : "ElbSecurityGroup" }],
         "Subnets" : [
           "subnet-637bcb48","subnet-45c34b1c","subnet-7d6a000a","subnet-aca9f196"
         ],
