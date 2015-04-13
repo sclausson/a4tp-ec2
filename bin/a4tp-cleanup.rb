@@ -16,5 +16,5 @@ hostnames.each do |name|
 end
 
 #Delete Cfn Stack
-cfn.stacks[opts[:stackname]].delete
+cfn.stacks[opts[:stackName]].delete
 
