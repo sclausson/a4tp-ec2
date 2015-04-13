@@ -22,7 +22,7 @@
 
   "Mappings" : {
     "AWSRegion2AMI" : {
-      "us-east-1" : { "ami" : "ami-7a11e213" }
+      "us-east-1" : { "ami" : "ami-1ecae776" }
     }
   },
 
@@ -145,8 +145,8 @@
               "#update iptables\n",
               "iptables -A INPUT -p tcp -m tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT\n",
               "# Grab latest Cloudformation tools from Amazon\n",
-              "easy_install lockfile==0.9.1\n",
-              "easy_install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz\n",
+              "# easy_install lockfile==0.9.1\n",
+              "# easy_install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-latest.tar.gz\n",
               "#update packages\n",
               "yum -y update\n",
               "#install chef client\n",
