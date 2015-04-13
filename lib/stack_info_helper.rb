@@ -3,12 +3,13 @@ require 'aws-sdk'
 
 class Stack
 
-  attr_reader :stack_name, :asg, :ips
+  attr_reader :stack_name, :asg, :ips, :hostnames
 
   def initialize(stack_name)
     @stack_name = stack_name
     get_stack_asg
     get_ip_addresses
+    get_hostnames
   end
 
   def get_stack_asg
@@ -27,20 +28,18 @@ class Stack
   end
 
   def get_ip_addresses
-    cfn = AWS::CloudFormation.new
-    as = AWS::AutoScaling.new
-
-    instanceCollections = []
-    #asg = get_stack_asg
-    instanceCollections << @asg.ec2_instances
-
     @ips = []
-
-    instanceCollections.each do |ic|
-      ic.each do |instance|
-        @ips << instance.private_ip_address
-      end
+    @asg.ec2_instances.each do |i|
+        @ips << i.private_ip_address
     end
     return @ips
+  end
+
+  def get_hostnames
+    @hostnames = []
+    @asg.ec2_instances.each do |i|
+        @hostnames << i.private_dns_name.split('.').first
+    end
+    return @hostnames
   end
 end
