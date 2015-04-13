@@ -107,7 +107,7 @@
                   "Fn::Join" : [
                     "",
                     [
-                      "cfn-signal -e 0 -r \"a4tp Website Setup Complete\" '",
+                      "/opt/aws/bin/cfn-signal -e 0 -r \"a4tp Website Setup Complete\" '",
                       {
                         "Ref" : "CompletionWaitHandle"
                       },
@@ -155,11 +155,11 @@
               "#Error reporting helper function\n",
               "function error_exit\n",
               "{\n",
-              " cfn-signal -e 1 -r \"$1\" '", { "Ref" : "CompletionWaitHandle" }, "'\n",
+              " /opt/aws/bin/cfn-signal -e 1 -r \"$1\" '", { "Ref" : "CompletionWaitHandle" }, "'\n",
               " exit 1\n",
               "}\n", 
               "#Inititalize cfn-init run\n",
-              "cfn-init -v -s ", { "Ref" : "AWS::StackName" }, " -r LaunchConfiguration", " --region ", { "Ref" : "AWS::Region" }, " > /tmp/cfn-init.log 2>&1 || error_exit $(/tmp/cfn-init.log)\n"
+              "/opt/aws/bin/cfn-init -v -s ", { "Ref" : "AWS::StackName" }, " -r LaunchConfiguration", " --region ", { "Ref" : "AWS::Region" }, " > /tmp/cfn-init.log 2>&1 || error_exit $(/tmp/cfn-init.log)\n"
               ]
             ]
 
