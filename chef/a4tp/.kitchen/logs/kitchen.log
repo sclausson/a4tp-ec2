@@ -1,0 +1,244 @@
+I, [2015-04-07T21:26:50.657913 #25721]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+E, [2015-04-07T21:26:50.987727 #25721] ERROR -- Kitchen: ------Exception-------
+E, [2015-04-07T21:26:50.987810 #25721] ERROR -- Kitchen: Class: Kitchen::UserError
+E, [2015-04-07T21:26:50.987842 #25721] ERROR -- Kitchen: Message: Could not load or activate Berkshelf (cannot load such file -- berkshelf)
+E, [2015-04-07T21:26:50.987866 #25721] ERROR -- Kitchen: ---Nested Exception---
+E, [2015-04-07T21:26:50.987933 #25721] ERROR -- Kitchen: Class: LoadError
+E, [2015-04-07T21:26:50.987953 #25721] ERROR -- Kitchen: Message: cannot load such file -- berkshelf
+E, [2015-04-07T21:26:50.987972 #25721] ERROR -- Kitchen: ------Backtrace-------
+E, [2015-04-07T21:26:50.987990 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/provisioner/chef/berkshelf.rb:108:in `rescue in load_berkshelf!'
+E, [2015-04-07T21:26:50.988011 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/provisioner/chef/berkshelf.rb:95:in `load_berkshelf!'
+E, [2015-04-07T21:26:50.988031 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/provisioner/chef/berkshelf.rb:54:in `load!'
+E, [2015-04-07T21:26:50.988050 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/provisioner/chef_base.rb:129:in `load_needed_dependencies!'
+E, [2015-04-07T21:26:50.988070 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/provisioner/base.rb:54:in `finalize_config!'
+E, [2015-04-07T21:26:50.988090 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:281:in `setup_provisioner'
+E, [2015-04-07T21:26:50.988109 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:101:in `initialize'
+E, [2015-04-07T21:26:50.988129 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/config.rb:238:in `new'
+E, [2015-04-07T21:26:50.988148 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/config.rb:238:in `new_instance'
+E, [2015-04-07T21:26:50.988167 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/config.rb:129:in `block in build_instances'
+E, [2015-04-07T21:26:50.988187 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/config.rb:128:in `map'
+E, [2015-04-07T21:26:50.988206 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/config.rb:128:in `with_index'
+E, [2015-04-07T21:26:50.988225 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/config.rb:128:in `build_instances'
+E, [2015-04-07T21:26:50.988245 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/config.rb:104:in `instances'
+E, [2015-04-07T21:26:50.988264 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command.rb:115:in `filtered_instances'
+E, [2015-04-07T21:26:50.988283 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command.rb:145:in `parse_subcommand'
+E, [2015-04-07T21:26:50.988306 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command/action.rb:38:in `block in call'
+E, [2015-04-07T21:26:50.988326 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:288:in `measure'
+E, [2015-04-07T21:26:50.988346 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command/action.rb:37:in `call'
+E, [2015-04-07T21:26:50.988365 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/cli.rb:56:in `perform'
+E, [2015-04-07T21:26:50.988385 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/cli.rb:161:in `block (2 levels) in <class:CLI>'
+E, [2015-04-07T21:26:50.988417 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/thor-0.19.1/lib/thor/command.rb:27:in `run'
+E, [2015-04-07T21:26:50.988439 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/thor-0.19.1/lib/thor/invocation.rb:126:in `invoke_command'
+E, [2015-04-07T21:26:50.988458 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/cli.rb:304:in `invoke_task'
+E, [2015-04-07T21:26:50.988478 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/thor-0.19.1/lib/thor.rb:359:in `dispatch'
+E, [2015-04-07T21:26:50.988497 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/thor-0.19.1/lib/thor/base.rb:440:in `start'
+E, [2015-04-07T21:26:50.988517 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/bin/kitchen:13:in `block in <top (required)>'
+E, [2015-04-07T21:26:50.988536 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/errors.rb:154:in `with_friendly_errors'
+E, [2015-04-07T21:26:50.988555 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/bin/kitchen:13:in `<top (required)>'
+E, [2015-04-07T21:26:50.988574 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/bin/kitchen:23:in `load'
+E, [2015-04-07T21:26:50.988593 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/bin/kitchen:23:in `<main>'
+E, [2015-04-07T21:26:50.988611 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/bin/ruby_executable_hooks:15:in `eval'
+E, [2015-04-07T21:26:50.988631 #25721] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/bin/ruby_executable_hooks:15:in `<main>'
+E, [2015-04-07T21:26:50.988650 #25721] ERROR -- Kitchen: ----------------------
+I, [2015-04-07T21:41:50.805351 #34862]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T21:41:51.612292 #34862]  INFO -- Kitchen: -----> Creating <default-centos65>...
+I, [2015-04-07T21:42:45.411731 #34862]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-07T21:44:17.663259 #34862]  INFO -- Kitchen: -----> Kitchen is finished. (2m26.86s)
+I, [2015-04-07T21:45:00.134828 #35827]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T21:45:00.992363 #35827]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-07T21:45:05.532177 #35827]  INFO -- Kitchen: -----> Kitchen is finished. (0m5.40s)
+I, [2015-04-07T21:53:37.649898 #38164]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T21:53:38.514704 #38164]  INFO -- Kitchen: -----> Converging <default-centos65>...
+E, [2015-04-07T21:53:43.137666 #38164] ERROR -- Kitchen: Converge failed on instance <default-centos65>.
+I, [2015-04-07T21:54:37.426941 #38448]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T21:54:38.077253 #38448]  INFO -- Kitchen: -----> Converging <default-centos65>...
+E, [2015-04-07T21:54:42.730891 #38448] ERROR -- Kitchen: Converge failed on instance <default-centos65>.
+I, [2015-04-07T21:55:25.253271 #38673]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T21:55:25.904184 #38673]  INFO -- Kitchen: -----> Converging <default-centos65>...
+E, [2015-04-07T21:55:28.577705 #38673] ERROR -- Kitchen: Converge failed on instance <default-centos65>.
+I, [2015-04-07T21:57:23.551800 #39216]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T21:57:24.209921 #39216]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-07T21:57:39.679416 #39216]  INFO -- Kitchen: -----> Kitchen is finished. (0m16.13s)
+I, [2015-04-07T22:02:29.723391 #40594]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:02:30.440062 #40594]  INFO -- Kitchen: -----> Setting up <default-centos65>...
+I, [2015-04-07T22:02:47.624828 #40594]  INFO -- Kitchen: -----> Kitchen is finished. (0m17.90s)
+I, [2015-04-07T22:02:54.928029 #40706]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:02:55.577533 #40706]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-07T22:03:18.157473 #40706]  INFO -- Kitchen: -----> Kitchen is finished. (0m23.23s)
+I, [2015-04-07T22:07:22.481464 #41913]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:07:23.140960 #41913]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-07T22:07:25.837372 #41913] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-07T22:08:26.669540 #42205]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:08:27.314608 #42205]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-07T22:08:30.032183 #42205]  INFO -- Kitchen: -----> Kitchen is finished. (0m3.36s)
+I, [2015-04-07T22:24:10.877094 #46535]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:24:11.648124 #46535]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-07T22:24:14.605997 #46535] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-07T22:25:15.157232 #46821]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:25:15.875177 #46821]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-07T22:25:18.724754 #46821] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-07T22:27:44.943030 #47502]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:27:45.647725 #47502]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-07T22:27:48.530347 #47502] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-07T22:40:11.249982 #50856]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:40:11.927903 #50856]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-07T22:40:14.754834 #50856] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-07T22:50:19.577045 #53568]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:50:20.246018 #53568]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-07T22:50:22.884126 #53568] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-07T22:57:49.704880 #55582]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T22:57:50.710379 #55582]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-07T22:57:53.342426 #55582] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-07T23:00:06.979451 #56210]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-07T23:00:07.662055 #56210]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-07T23:00:10.329649 #56210]  INFO -- Kitchen: -----> Kitchen is finished. (0m3.35s)
+I, [2015-04-13T13:19:43.780911 #3034]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:19:44.892097 #3034]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-13T13:19:46.909746 #3034] ERROR -- Kitchen: ------Exception-------
+E, [2015-04-13T13:19:46.909795 #3034] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2015-04-13T13:19:46.909823 #3034] ERROR -- Kitchen: Message: Failed to complete #verify action: [Connection refused - connect(2) for "127.0.0.1" port 2222]
+E, [2015-04-13T13:19:46.909891 #3034] ERROR -- Kitchen: ---Nested Exception---
+E, [2015-04-13T13:19:46.909923 #3034] ERROR -- Kitchen: Class: Errno::ECONNREFUSED
+E, [2015-04-13T13:19:46.909947 #3034] ERROR -- Kitchen: Message: Connection refused - connect(2) for "127.0.0.1" port 2222
+E, [2015-04-13T13:19:46.909997 #3034] ERROR -- Kitchen: ------Backtrace-------
+E, [2015-04-13T13:19:46.910025 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:70:in `initialize'
+E, [2015-04-13T13:19:46.910048 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:70:in `open'
+E, [2015-04-13T13:19:46.910071 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:70:in `block in initialize'
+E, [2015-04-13T13:19:46.910123 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/timeout.rb:74:in `timeout'
+E, [2015-04-13T13:19:46.910151 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/timeout.rb:125:in `timeout'
+E, [2015-04-13T13:19:46.910173 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:67:in `initialize'
+E, [2015-04-13T13:19:46.910199 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh.rb:207:in `new'
+E, [2015-04-13T13:19:46.910239 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh.rb:207:in `start'
+E, [2015-04-13T13:19:46.910266 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:201:in `establish_connection'
+E, [2015-04-13T13:19:46.910288 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:184:in `session'
+E, [2015-04-13T13:19:46.910318 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:236:in `exec_with_exit'
+E, [2015-04-13T13:19:46.910354 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:81:in `exec'
+E, [2015-04-13T13:19:46.910380 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:150:in `run_remote'
+E, [2015-04-13T13:19:46.910403 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:66:in `block in verify'
+E, [2015-04-13T13:19:46.910466 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:70:in `initialize'
+E, [2015-04-13T13:19:46.910497 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:65:in `new'
+E, [2015-04-13T13:19:46.910520 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:65:in `verify'
+E, [2015-04-13T13:19:46.910541 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:352:in `public_send'
+E, [2015-04-13T13:19:46.910577 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:352:in `block in perform_action'
+E, [2015-04-13T13:19:46.910610 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:416:in `call'
+E, [2015-04-13T13:19:46.910638 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:416:in `synchronize_or_call'
+E, [2015-04-13T13:19:46.910660 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:381:in `block in action'
+E, [2015-04-13T13:19:46.910693 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:288:in `measure'
+E, [2015-04-13T13:19:46.910729 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:380:in `action'
+E, [2015-04-13T13:19:46.910753 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:352:in `perform_action'
+E, [2015-04-13T13:19:46.910774 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:330:in `verify_action'
+E, [2015-04-13T13:19:46.910799 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:292:in `block in transition_to'
+E, [2015-04-13T13:19:46.910842 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:291:in `each'
+E, [2015-04-13T13:19:46.910866 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:291:in `transition_to'
+E, [2015-04-13T13:19:46.910897 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:152:in `verify'
+E, [2015-04-13T13:19:46.910936 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command.rb:176:in `public_send'
+E, [2015-04-13T13:19:46.910970 #3034] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command.rb:176:in `block (2 levels) in run_action'
+E, [2015-04-13T13:19:46.910994 #3034] ERROR -- Kitchen: ----------------------
+I, [2015-04-13T13:20:46.108311 #3236]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:20:47.000617 #3236]  INFO -- Kitchen: -----> Converging <default-centos65>...
+E, [2015-04-13T13:20:52.537083 #3236] ERROR -- Kitchen: ------Exception-------
+E, [2015-04-13T13:20:52.537189 #3236] ERROR -- Kitchen: Class: Kitchen::ActionFailed
+E, [2015-04-13T13:20:52.537218 #3236] ERROR -- Kitchen: Message: Failed to complete #converge action: [Connection refused - connect(2) for "127.0.0.1" port 2222]
+E, [2015-04-13T13:20:52.537242 #3236] ERROR -- Kitchen: ---Nested Exception---
+E, [2015-04-13T13:20:52.537265 #3236] ERROR -- Kitchen: Class: Errno::ECONNREFUSED
+E, [2015-04-13T13:20:52.537286 #3236] ERROR -- Kitchen: Message: Connection refused - connect(2) for "127.0.0.1" port 2222
+E, [2015-04-13T13:20:52.537309 #3236] ERROR -- Kitchen: ------Backtrace-------
+E, [2015-04-13T13:20:52.537339 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:70:in `initialize'
+E, [2015-04-13T13:20:52.537375 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:70:in `open'
+E, [2015-04-13T13:20:52.537396 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:70:in `block in initialize'
+E, [2015-04-13T13:20:52.537420 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/timeout.rb:74:in `timeout'
+E, [2015-04-13T13:20:52.537451 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/timeout.rb:125:in `timeout'
+E, [2015-04-13T13:20:52.537473 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh/transport/session.rb:67:in `initialize'
+E, [2015-04-13T13:20:52.537494 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh.rb:207:in `new'
+E, [2015-04-13T13:20:52.537515 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/net-ssh-2.9.2/lib/net/ssh.rb:207:in `start'
+E, [2015-04-13T13:20:52.537536 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:201:in `establish_connection'
+E, [2015-04-13T13:20:52.537557 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:184:in `session'
+E, [2015-04-13T13:20:52.537577 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:236:in `exec_with_exit'
+E, [2015-04-13T13:20:52.537598 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:81:in `exec'
+E, [2015-04-13T13:20:52.537619 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:150:in `run_remote'
+E, [2015-04-13T13:20:52.537641 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:46:in `block in converge'
+E, [2015-04-13T13:20:52.537661 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/ssh.rb:70:in `initialize'
+E, [2015-04-13T13:20:52.537682 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:45:in `new'
+E, [2015-04-13T13:20:52.537703 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/driver/ssh_base.rb:45:in `converge'
+E, [2015-04-13T13:20:52.537725 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:352:in `public_send'
+E, [2015-04-13T13:20:52.537760 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:352:in `block in perform_action'
+E, [2015-04-13T13:20:52.537783 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:416:in `call'
+E, [2015-04-13T13:20:52.537803 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:416:in `synchronize_or_call'
+E, [2015-04-13T13:20:52.537824 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:381:in `block in action'
+E, [2015-04-13T13:20:52.537844 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/rubies/ruby-2.2.0/lib/ruby/2.2.0/benchmark.rb:288:in `measure'
+E, [2015-04-13T13:20:52.537865 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:380:in `action'
+E, [2015-04-13T13:20:52.537885 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:352:in `perform_action'
+E, [2015-04-13T13:20:52.537906 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:312:in `converge_action'
+E, [2015-04-13T13:20:52.537926 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:292:in `block in transition_to'
+E, [2015-04-13T13:20:52.537946 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:291:in `each'
+E, [2015-04-13T13:20:52.537967 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:291:in `transition_to'
+E, [2015-04-13T13:20:52.537987 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/instance.rb:130:in `converge'
+E, [2015-04-13T13:20:52.538007 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command.rb:176:in `public_send'
+E, [2015-04-13T13:20:52.538027 #3236] ERROR -- Kitchen: /Users/shayne/.rvm/gems/ruby-2.2.0/gems/test-kitchen-1.3.1/lib/kitchen/command.rb:176:in `block (2 levels) in run_action'
+E, [2015-04-13T13:20:52.538048 #3236] ERROR -- Kitchen: ----------------------
+I, [2015-04-13T13:21:30.801100 #3384]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:21:31.496699 #3384]  INFO -- Kitchen: -----> Creating <default-centos65>...
+I, [2015-04-13T13:21:50.790676 #3384]  INFO -- Kitchen: -----> Kitchen is finished. (0m19.99s)
+I, [2015-04-13T13:22:00.486110 #3592]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:22:01.471149 #3592]  INFO -- Kitchen: -----> Converging <default-centos65>...
+E, [2015-04-13T13:22:06.552487 #3592] ERROR -- Kitchen: Converge failed on instance <default-centos65>.
+I, [2015-04-13T13:22:34.483429 #3713]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:22:35.493352 #3713]  INFO -- Kitchen: -----> Cleaning up any prior instances of <default-centos65>
+I, [2015-04-13T13:22:35.494673 #3713]  INFO -- Kitchen: -----> Destroying <default-centos65>...
+I, [2015-04-13T13:22:40.424512 #3713]  INFO -- Kitchen: -----> Testing <default-centos65>
+I, [2015-04-13T13:22:40.424734 #3713]  INFO -- Kitchen: -----> Creating <default-centos65>...
+I, [2015-04-13T13:23:31.276713 #3713]  INFO -- Kitchen: -----> Converging <default-centos65>...
+E, [2015-04-13T13:24:02.133499 #3713] ERROR -- Kitchen: Converge failed on instance <default-centos65>.
+I, [2015-04-13T13:25:24.031591 #4391]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:25:25.089084 #4391]  INFO -- Kitchen: -----> Cleaning up any prior instances of <default-centos65>
+I, [2015-04-13T13:25:25.090602 #4391]  INFO -- Kitchen: -----> Destroying <default-centos65>...
+I, [2015-04-13T13:25:30.192805 #4391]  INFO -- Kitchen: -----> Testing <default-centos65>
+I, [2015-04-13T13:25:30.192979 #4391]  INFO -- Kitchen: -----> Creating <default-centos65>...
+I, [2015-04-13T13:26:21.334057 #4391]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-13T13:27:13.949845 #4391]  INFO -- Kitchen: -----> Setting up <default-centos65>...
+I, [2015-04-13T13:27:28.092369 #4391]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-13T13:27:42.785009 #4391]  INFO -- Kitchen: -----> Destroying <default-centos65>...
+I, [2015-04-13T13:27:47.874917 #4391]  INFO -- Kitchen: -----> Kitchen is finished. (2m23.85s)
+I, [2015-04-13T13:27:55.814057 #5031]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:27:56.694514 #5031]  INFO -- Kitchen: -----> Creating <default-centos65>...
+I, [2015-04-13T13:28:41.288610 #5031]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-13T13:29:22.018822 #5031]  INFO -- Kitchen: -----> Kitchen is finished. (1m26.21s)
+I, [2015-04-13T13:29:32.731300 #5435]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:29:33.763881 #5435]  INFO -- Kitchen: -----> Setting up <default-centos65>...
+I, [2015-04-13T13:29:47.339794 #5435]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-13T13:30:01.407634 #5435]  INFO -- Kitchen: -----> Kitchen is finished. (0m28.68s)
+I, [2015-04-13T13:36:39.313356 #6851]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:36:40.363868 #6851]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+E, [2015-04-13T13:36:43.292936 #6851] ERROR -- Kitchen: Verify failed on instance <default-centos65>.
+I, [2015-04-13T13:37:42.207188 #7071]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T13:37:43.163100 #7071]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-13T13:37:46.160056 #7071]  INFO -- Kitchen: -----> Kitchen is finished. (0m3.95s)
+I, [2015-04-13T21:39:11.486385 #63765]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T21:39:12.847763 #63765]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-13T21:39:16.173356 #63765]  INFO -- Kitchen: -----> Kitchen is finished. (0m4.69s)
+I, [2015-04-13T21:39:24.088469 #63818]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T21:39:25.043704 #63818]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-13T21:39:37.068291 #63818]  INFO -- Kitchen: -----> Kitchen is finished. (0m12.98s)
+I, [2015-04-13T21:41:38.284988 #64264]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T21:41:39.310653 #64264]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-13T21:41:46.017456 #64264]  INFO -- Kitchen: -----> Kitchen is finished. (0m7.73s)
+I, [2015-04-13T21:41:50.896734 #64313]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T21:41:51.830073 #64313]  INFO -- Kitchen: -----> Setting up <default-centos65>...
+I, [2015-04-13T21:41:58.389483 #64313]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-13T21:42:01.505412 #64313]  INFO -- Kitchen: -----> Kitchen is finished. (0m10.61s)
+I, [2015-04-13T21:42:05.744237 #64372]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T21:42:06.734085 #64372]  INFO -- Kitchen: -----> Destroying <default-centos65>...
+I, [2015-04-13T21:42:12.074865 #64372]  INFO -- Kitchen: -----> Kitchen is finished. (0m6.33s)
+I, [2015-04-13T21:42:15.873514 #64441]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T21:42:16.575089 #64441]  INFO -- Kitchen: -----> Creating <default-centos65>...
+I, [2015-04-13T21:43:04.004319 #64441]  INFO -- Kitchen: -----> Kitchen is finished. (0m48.13s)
+I, [2015-04-13T21:43:08.747464 #64699]  INFO -- Kitchen: -----> Starting Kitchen (v1.3.1)
+I, [2015-04-13T21:43:09.615014 #64699]  INFO -- Kitchen: -----> Cleaning up any prior instances of <default-centos65>
+I, [2015-04-13T21:43:09.615756 #64699]  INFO -- Kitchen: -----> Destroying <default-centos65>...
+I, [2015-04-13T21:43:14.464448 #64699]  INFO -- Kitchen: -----> Testing <default-centos65>
+I, [2015-04-13T21:43:14.465232 #64699]  INFO -- Kitchen: -----> Creating <default-centos65>...
+I, [2015-04-13T21:44:06.188326 #64699]  INFO -- Kitchen: -----> Converging <default-centos65>...
+I, [2015-04-13T21:46:31.084764 #64699]  INFO -- Kitchen: -----> Setting up <default-centos65>...
+I, [2015-04-13T21:46:50.909075 #64699]  INFO -- Kitchen: -----> Verifying <default-centos65>...
+I, [2015-04-13T21:47:09.143635 #64699]  INFO -- Kitchen: -----> Destroying <default-centos65>...
+I, [2015-04-13T21:47:14.268892 #64699]  INFO -- Kitchen: -----> Kitchen is finished. (4m5.52s)
