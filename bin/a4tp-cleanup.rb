@@ -7,7 +7,7 @@ end
 
 cfn = AWS::CloudFormation.new
 
-hostnames = Stack.new(opts[:stackname]).hostnames
+hostnames = Stack.new(opts[:stackName]).hostnames
 
 #Cleanup nodes and clients from hosted chef
 hostnames.each do |name|
@@ -16,5 +16,5 @@ hostnames.each do |name|
 end
 
 #Delete Cfn Stack
-cfn.stacks["#{opts[:stackName]}"].delete
+cfn.stacks[opts[:stackName]].delete
 
