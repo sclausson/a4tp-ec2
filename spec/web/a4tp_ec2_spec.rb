@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'a4tp::default' do
+describe "Automation for the People Webserver on #{ENV['TARGET_HOST']}" do
 
   it 'has httpd installed' do
   	expect(package('httpd')).to be_installed
@@ -24,3 +24,4 @@ describe 'a4tp::default' do
   end
 
 end
+
