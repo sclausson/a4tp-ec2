@@ -5,6 +5,9 @@ class Stack
 
   attr_reader :stack_name, :asg, :ips, :hostnames
 
+  @@cfn = AWS::CloudFormation.new
+  @@as = AWS::AutoScaling.new
+
   def initialize(stack_name)
     @stack_name = stack_name
     get_stack_asg
@@ -13,15 +16,12 @@ class Stack
   end
 
   def get_stack_asg
-      cfn = AWS::CloudFormation.new
-      as = AWS::AutoScaling.new
-
-      stack = cfn.stacks[@stack_name]
+      stack = @@cfn.stacks[@stack_name]
       stack.resources.each do |resource|
         case resource.resource_type
         when "AWS::AutoScaling::AutoScalingGroup"
           asg_id = resource.physical_resource_id
-          @asg = as.groups[asg_id]
+          @asg = @@as.groups[asg_id]
         end
       end
       return @asg
@@ -42,4 +42,10 @@ class Stack
     end
     return @hostnames
   end
+
+  def output_value(output_key)
+    output = @@cfn.stacks["#{@stack_name}"].outputs.select {|o| o.key == "#{output_key}"}
+    return output.first.value
+  end
+
 end
