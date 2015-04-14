@@ -8,6 +8,6 @@ Instances are deployed using an Autoscaling Group/Launch Configuration across mu
 Finally, all infrastrucure is tested using Serverspec.  If any critical components of the website are malfunctioning, then the build will fail.
 
 ##Usage
-Jenkins is used to orchestrate the build.  The Jenkins sever is available [here](http://ec2-52-5-248-135.compute-1.amazonaws.com/).  Login with the username and password provided to Antonia.  Once logged in, navigate to the [a4tp-ec2 job](http://ec2-52-5-248-135.compute-1.amazonaws.com/job/a4tp-ec2/){:target="_blank"} and click "Build with Paramters".  Select your options, and click build. (Please choose t2.micro InstanceType to keep costs down)
+Jenkins is used to orchestrate the build.  The Jenkins sever is available [here](http://ec2-52-5-248-135.compute-1.amazonaws.com/).  Login with the username and password provided to Antonia.  Once logged in, navigate to the [a4tp-ec2 job](http://ec2-52-5-248-135.compute-1.amazonaws.com/job/a4tp-ec2/) and click "Build with Paramters".  Select your options, and click build. (Please choose t2.micro InstanceType to keep costs down)
 
 The job takes ~5 minutes to complete.  Once complete, the build page will display the URL for the Load Balancer under the Website Information banner.  Click the link, and you will see "Automation for the People".
