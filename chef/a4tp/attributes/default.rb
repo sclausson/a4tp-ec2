@@ -1,1 +1,1 @@
-default['a4tp']['page-text'] = "Automation for the People"
+default['a4tp']['page-text'] = "Automation for the Robots"
