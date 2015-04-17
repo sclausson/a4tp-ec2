@@ -10,7 +10,7 @@ service "httpd" do
 	action [:enable, :start]
 end
 
-template "/var/www/html/index.html" do
-	source 'index.html.erb'
-	mode '0644'
+remote_file '/var/www/html/index.html' do
+	action :create
+	source "https://raw.githubusercontent.com/sclausson/a4tp-web/master/index.html"
 end

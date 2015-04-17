@@ -1,1 +1,0 @@
-default['a4tp']['page-text'] = "Automation for the People"
