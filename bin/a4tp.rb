@@ -25,4 +25,4 @@ template = File.expand_path("../../cloudformation/#{@opts[:template]}", __FILE__
 
 @stack.create(@opts[:stackName], template, params, true)
 
-@stack.watch(@opts[:stackName], 5)
+@stack.watch(@opts[:stackName], 20)
