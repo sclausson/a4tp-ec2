@@ -8,17 +8,15 @@ class Stack
   @@cfn = AWS::CloudFormation.new
   @@as = AWS::AutoScaling.new
 
-  def initialize(stack_name)
-    @stack_name = stack_name
+  def initialize(stack_name, asg_resource_logical_name = "AutoScalingGroup")
+    @stack_name, @asg_logical = stack_name, asg_resource_logical_name
     get_stack_asg
     get_ip_addresses
     get_hostnames
   end
 
   def get_stack_asg
-    stack = @@cfn.stacks[@stack_name]
-    asg_resource = stack.resources.find { |r| r.resource_type == "AWS::AutoScaling::AutoScalingGroup" }
-    asg_id = asg_resource.physical_resource_id
+    asg_id = @@cfn.stacks[@stack_name].resources[@asg_logical].physical_resource_id
     @asg = @@as.groups[asg_id]
   end
 
@@ -31,7 +29,7 @@ class Stack
   end
 
   def output_value(output_key)
-    output = @@cfn.stacks["#{@stack_name}"].outputs.select { |o| o.key == "#{output_key}" }
+    output = @@cfn.stacks[@stack_name].outputs.select { |o| o.key == output_key }
     return output.first.value
   end
 
